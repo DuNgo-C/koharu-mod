@@ -86,6 +86,7 @@ export function CanvasWorkspace() {
   const [canvasElement, setCanvasElement] = useState<HTMLCanvasElement | null>(null)
   const gesture = useRef<Gesture | null>(null)
   const previousPageIndex = useRef<number | null>(null)
+  const previousZoomPageId = useRef<string | null>(null)
   const spaceHeld = useRef(false)
   const transformActive = useRef(false)
   const transformRevision = useRef<number | null>(null)
@@ -304,6 +305,40 @@ export function CanvasWorkspace() {
         .catch(() => undefined)
     }
   }, [canvasGeneration, canvasPage, canvasState.generation, canvasState.status, pageId, pages])
+
+  useEffect(() => {
+    if (!pageId || pageWidth === undefined || pageHeight === undefined) return
+
+    const previousPageId = previousZoomPageId.current
+    if (previousPageId === pageId) return
+    previousZoomPageId.current = pageId
+    if (previousPageId === null) {
+      fitCanvas()
+      return
+    }
+
+    const element = surface.current
+    if (!element) return
+
+    const current = useKoharuStore.getState().camera
+    if (current.fitted) {
+      fitCanvas()
+      return
+    }
+
+    const bounds = element.getBoundingClientRect()
+    const dpr = window.devicePixelRatio
+    useKoharuStore.setState({
+      camera: {
+        zoom: current.zoom,
+        translation: [
+          (bounds.width * dpr - pageWidth * current.zoom) * 0.5,
+          (bounds.height * dpr - pageHeight * current.zoom) * 0.5,
+        ],
+        fitted: false,
+      },
+    })
+  }, [fitCanvas, pageHeight, pageId, pageWidth])
 
   useEffect(() => {
     fitCanvas()
