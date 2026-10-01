@@ -231,6 +231,7 @@ export function CanvasWorkspace() {
     const next = containCamera(bounds.width * dpr, bounds.height * dpr, pageWidth, pageHeight)
     useKoharuStore.setState({ camera: { ...next, fitted: true } })
   }, [pageHeight, pageId, pageWidth])
+  const fitCanvasRef = useRef(fitCanvas)
 
   const report = useCallback(() => {
     const element = surface.current
@@ -257,6 +258,10 @@ export function CanvasWorkspace() {
       },
     })
   }, [])
+
+  useEffect(() => {
+    fitCanvasRef.current = fitCanvas
+  }, [fitCanvas])
 
   useEffect(() => {
     const element = surface.current
@@ -341,8 +346,8 @@ export function CanvasWorkspace() {
   }, [fitCanvas, pageHeight, pageId, pageWidth])
 
   useEffect(() => {
-    fitCanvas()
-  }, [fitCanvas, fitCanvasRequest])
+    fitCanvasRef.current()
+  }, [fitCanvasRequest])
 
   useEffect(() => cancelGesture, [cancelGesture, canvasGeneration, canvasRevision, page?.id, tool])
 
