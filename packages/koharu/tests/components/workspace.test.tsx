@@ -194,6 +194,49 @@ describe('canvas interaction adapter', () => {
     expect(useKoharuStore.getState().camera).toEqual(camera)
   })
 
+  it('keeps the manual zoom and aligns the new page to its top center when changing pages', () => {
+    installProject()
+    queryClient.setQueryData(pagesKey, [
+      {
+        id: 'page',
+        label: 'Page',
+        size: { width: 1000, height: 1000 },
+        source_asset: null,
+        layer_count: 1,
+      },
+      {
+        id: 'next',
+        label: 'Next',
+        size: { width: 1200, height: 800 },
+        source_asset: null,
+        layer_count: 1,
+      },
+    ])
+    renderWorkspace()
+
+    act(() =>
+      useKoharuStore.setState({
+        camera: { zoom: 0.7, translation: [-120, -80], fitted: false },
+      }),
+    )
+    act(() => {
+      queryClient.setQueryData(pageKey, {
+        id: 'next',
+        label: 'Next',
+        size: { width: 1200, height: 800 },
+        layers: [layer],
+        regions: [],
+      })
+      useKoharuStore.setState({ canvasPage: 'next', canvasSize: [1200, 800] })
+    })
+
+    expect(useKoharuStore.getState().camera).toEqual({
+      zoom: 0.7,
+      translation: [-20, 0],
+      fitted: false,
+    })
+  })
+
   it('suppresses Alt browser handling while an editor input retains focus', () => {
     installProject()
     renderWorkspace()

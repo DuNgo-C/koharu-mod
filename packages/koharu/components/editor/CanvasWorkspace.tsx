@@ -86,6 +86,7 @@ export function CanvasWorkspace() {
   const [canvasElement, setCanvasElement] = useState<HTMLCanvasElement | null>(null)
   const gesture = useRef<Gesture | null>(null)
   const previousPageIndex = useRef<number | null>(null)
+  const previousZoomPageId = useRef<string | null>(null)
   const spaceHeld = useRef(false)
   const transformActive = useRef(false)
   const transformRevision = useRef<number | null>(null)
@@ -230,6 +231,7 @@ export function CanvasWorkspace() {
     const next = containCamera(bounds.width * dpr, bounds.height * dpr, pageWidth, pageHeight)
     useKoharuStore.setState({ camera: { ...next, fitted: true } })
   }, [pageHeight, pageId, pageWidth])
+  const fitCanvasRef = useRef(fitCanvas)
 
   const report = useCallback(() => {
     const element = surface.current
@@ -256,6 +258,10 @@ export function CanvasWorkspace() {
       },
     })
   }, [])
+
+  useEffect(() => {
+    fitCanvasRef.current = fitCanvas
+  }, [fitCanvas])
 
   useEffect(() => {
     const element = surface.current
@@ -306,8 +312,39 @@ export function CanvasWorkspace() {
   }, [canvasGeneration, canvasPage, canvasState.generation, canvasState.status, pageId, pages])
 
   useEffect(() => {
-    fitCanvas()
-  }, [fitCanvas, fitCanvasRequest])
+    if (!pageId || pageWidth === undefined || pageHeight === undefined) return
+
+    const previousPageId = previousZoomPageId.current
+    if (previousPageId === pageId) return
+    previousZoomPageId.current = pageId
+    if (previousPageId === null) {
+      fitCanvas()
+      return
+    }
+
+    const element = surface.current
+    if (!element) return
+
+    const current = useKoharuStore.getState().camera
+    const bounds = element.getBoundingClientRect()
+    const dpr = window.devicePixelRatio
+    if (current.fitted) {
+      fitCanvas()
+      return
+    }
+
+    useKoharuStore.setState({
+      camera: {
+        zoom: current.zoom,
+        translation: [(bounds.width * dpr - pageWidth * current.zoom) * 0.5, 0],
+        fitted: false,
+      },
+    })
+  }, [fitCanvas, pageHeight, pageId, pageWidth])
+
+  useEffect(() => {
+    fitCanvasRef.current()
+  }, [fitCanvasRequest])
 
   useEffect(() => cancelGesture, [cancelGesture, canvasGeneration, canvasRevision, page?.id, tool])
 
