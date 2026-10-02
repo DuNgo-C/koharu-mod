@@ -331,15 +331,10 @@ export function CanvasWorkspace() {
       return
     }
 
-    const bounds = element.getBoundingClientRect()
-    const dpr = window.devicePixelRatio
     useKoharuStore.setState({
       camera: {
         zoom: current.zoom,
-        translation: [
-          (bounds.width * dpr - pageWidth * current.zoom) * 0.5,
-          (bounds.height * dpr - pageHeight * current.zoom) * 0.5,
-        ],
+        translation: [0, 0],
         fitted: false,
       },
     })
