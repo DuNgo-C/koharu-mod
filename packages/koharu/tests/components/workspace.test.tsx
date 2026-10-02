@@ -194,7 +194,7 @@ describe('canvas interaction adapter', () => {
     expect(useKoharuStore.getState().camera).toEqual(camera)
   })
 
-  it('keeps the manual zoom and aligns the new page to its top-left when changing pages', () => {
+  it('keeps the manual zoom and aligns the new page to its top center when changing pages', () => {
     installProject()
     queryClient.setQueryData(pagesKey, [
       {
@@ -232,7 +232,7 @@ describe('canvas interaction adapter', () => {
 
     expect(useKoharuStore.getState().camera).toEqual({
       zoom: 0.7,
-      translation: [0, 0],
+      translation: [-20, 0],
       fitted: false,
     })
   })

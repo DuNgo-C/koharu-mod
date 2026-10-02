@@ -326,6 +326,8 @@ export function CanvasWorkspace() {
     if (!element) return
 
     const current = useKoharuStore.getState().camera
+    const bounds = element.getBoundingClientRect()
+    const dpr = window.devicePixelRatio
     if (current.fitted) {
       fitCanvas()
       return
@@ -334,7 +336,7 @@ export function CanvasWorkspace() {
     useKoharuStore.setState({
       camera: {
         zoom: current.zoom,
-        translation: [0, 0],
+        translation: [(bounds.width * dpr - pageWidth * current.zoom) * 0.5, 0],
         fitted: false,
       },
     })
