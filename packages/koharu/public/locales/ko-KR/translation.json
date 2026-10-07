@@ -451,6 +451,7 @@
     },
     "typesetting": {
       "addFamily": "글꼴 패밀리 추가",
+      "automaticText": "자동 텍스트",
       "defaultFamilies": "기본 글꼴 패밀리",
       "description": "텍스트 레이어에 글꼴 패밀리가 지정되지 않았을 때 사용할 순서 있는 글꼴 스택을 설정합니다.",
       "empty": "기본 패밀리가 없습니다. Koharu가 시스템 대체 글꼴을 사용합니다.",
@@ -459,6 +460,8 @@
       "fontFallbackDescription": "Koharu는 텍스트를 지원하는 첫 번째 사용 가능한 패밀리를 사용합니다.",
       "loadError": "글꼴을 불러오지 못했습니다. 기존 패밀리는 삭제할 수 있습니다.",
       "loadingFonts": "글꼴 불러오는 중…",
+      "minimumTextSize": "최소 텍스트 크기",
+      "minimumTextSizeDescription": "자동 조정 텍스트는 이 크기보다 작아지지 않으며 영역을 넘칠 수 있습니다.",
       "removeFamily": "{{family}} 삭제",
       "title": "조판"
     }

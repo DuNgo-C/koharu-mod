@@ -451,6 +451,7 @@
     },
     "typesetting": {
       "addFamily": "フォントファミリーを追加",
+      "automaticText": "自動テキスト",
       "defaultFamilies": "既定のフォントファミリー",
       "description": "テキストレイヤーにファミリーが指定されていない場合に使う、順序付きフォントスタックを設定します。",
       "empty": "既定のファミリーがありません。Koharuはシステムの代替フォントを使用します。",
@@ -459,6 +460,8 @@
       "fontFallbackDescription": "Koharuは文字に対応する最初の利用可能なファミリーを使用します。",
       "loadError": "フォントを読み込めませんでした。既存のファミリーは削除できます。",
       "loadingFonts": "フォントを読み込み中…",
+      "minimumTextSize": "最小文字サイズ",
+      "minimumTextSizeDescription": "自動調整されるテキストはこのサイズより小さくならず、領域からはみ出す場合があります。",
       "removeFamily": "{{family}}を削除",
       "title": "組版"
     }

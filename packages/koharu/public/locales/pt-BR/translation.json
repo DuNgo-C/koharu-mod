@@ -451,6 +451,7 @@
     },
     "typesetting": {
       "addFamily": "Adicionar família de fontes",
+      "automaticText": "Texto automático",
       "defaultFamilies": "Famílias de fontes padrão",
       "description": "Defina a pilha ordenada de fontes usada quando uma camada de texto não tem família atribuída.",
       "empty": "Nenhuma família padrão. O Koharu usará a alternativa do sistema.",
@@ -459,6 +460,8 @@
       "fontFallbackDescription": "O Koharu usa a primeira família disponível compatível com o texto.",
       "loadError": "Não foi possível carregar as fontes. As famílias existentes ainda podem ser removidas.",
       "loadingFonts": "Carregando fontes…",
+      "minimumTextSize": "Tamanho mínimo do texto",
+      "minimumTextSizeDescription": "O texto automático não ficará menor que esse tamanho e poderá ultrapassar sua região.",
       "removeFamily": "Remover {{family}}",
       "title": "Composição tipográfica"
     }

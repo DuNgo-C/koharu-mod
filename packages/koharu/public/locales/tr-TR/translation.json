@@ -451,6 +451,7 @@
     },
     "typesetting": {
       "addFamily": "Yazı tipi ailesi ekle",
+      "automaticText": "Otomatik metin",
       "defaultFamilies": "Varsayılan yazı tipi aileleri",
       "description": "Bir metin katmanına aile atanmadığında kullanılacak sıralı yazı tipi yığınını ayarlayın.",
       "empty": "Varsayılan aile yok. Koharu sistem yedeğini kullanacak.",
@@ -459,6 +460,8 @@
       "fontFallbackDescription": "Koharu, metni destekleyen ilk kullanılabilir aileyi kullanır.",
       "loadError": "Yazı tipleri yüklenemedi. Mevcut aileler yine de kaldırılabilir.",
       "loadingFonts": "Yazı tipleri yükleniyor…",
+      "minimumTextSize": "Minimum metin boyutu",
+      "minimumTextSizeDescription": "Otomatik boyutlandırılan metin bu değerin altına düşmez ve alanın dışına taşabilir.",
       "removeFamily": "{{family}} ailesini kaldır",
       "title": "Dizgi"
     }
