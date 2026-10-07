@@ -507,6 +507,7 @@ export type TranslationConfig = {
 
 export type TypesettingConfig = {
 	font_families?: string[],
+	minimum_font_size?: number,
 };
 
 export type Typography = {

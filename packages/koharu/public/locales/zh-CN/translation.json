@@ -451,6 +451,7 @@
     },
     "typesetting": {
       "addFamily": "添加字体系列",
+      "automaticText": "自动文本",
       "defaultFamilies": "默认字体系列",
       "description": "设置文本图层未指定字体系列时使用的有序字体堆栈。",
       "empty": "没有默认字体系列。Koharu 将使用系统后备字体。",
@@ -459,6 +460,8 @@
       "fontFallbackDescription": "Koharu 使用第一个支持该文本的可用字体系列。",
       "loadError": "无法加载字体。仍可删除现有字体系列。",
       "loadingFonts": "正在加载字体…",
+      "minimumTextSize": "最小文本大小",
+      "minimumTextSizeDescription": "自动调整的文本不会小于此大小，但可能会超出文本区域。",
       "removeFamily": "删除 {{family}}",
       "title": "排版"
     }

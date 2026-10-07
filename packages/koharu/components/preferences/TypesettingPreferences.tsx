@@ -5,7 +5,11 @@ import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { FontPicker } from '@/components/controls/FontPicker'
-import { PreferencePage } from '@/components/preferences/PreferenceFields'
+import {
+  NumberField,
+  PreferencePage,
+  PreferenceSection,
+} from '@/components/preferences/PreferenceFields'
 import { useFonts } from '@/lib/queries'
 import type { TypesettingConfig } from '@koharu/bridge/protocol'
 import { Button } from '@koharu/ui/components/button'
@@ -133,6 +137,23 @@ export function TypesettingPreferences({
           </p>
         )}
       </section>
+      <PreferenceSection
+        title={t('settings.typesetting.automaticText')}
+        description={t('settings.typesetting.minimumTextSizeDescription')}
+      >
+        <div className='py-3.5'>
+          <NumberField
+            label={t('settings.typesetting.minimumTextSize')}
+            value={value.minimum_font_size ?? 9}
+            min={1}
+            max={96}
+            step={1}
+            onChange={(minimum_font_size) =>
+              onChange({ ...value, minimum_font_size: minimum_font_size ?? 9 })
+            }
+          />
+        </div>
+      </PreferenceSection>
     </PreferencePage>
   )
 }

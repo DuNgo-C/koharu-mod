@@ -451,6 +451,7 @@
     },
     "typesetting": {
       "addFamily": "Add font family",
+      "automaticText": "Automatic text",
       "defaultFamilies": "Default font families",
       "description": "Set the ordered font stack used when a text layer has no assigned family.",
       "empty": "No default families. Koharu will use the system fallback.",
@@ -459,6 +460,8 @@
       "fontFallbackDescription": "Koharu uses the first available family that supports the text.",
       "loadError": "Fonts could not be loaded. Existing families can still be removed.",
       "loadingFonts": "Loading fonts…",
+      "minimumTextSize": "Minimum text size",
+      "minimumTextSizeDescription": "Automatic text will not shrink below this size and may overflow its region.",
       "removeFamily": "Remove {{family}}",
       "title": "Typesetting"
     }

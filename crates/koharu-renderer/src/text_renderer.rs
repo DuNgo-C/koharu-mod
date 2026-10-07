@@ -458,7 +458,7 @@ mod tests {
             font_weight: None,
             font_style: None,
             font_size: Some(6.0),
-            minimum_font_size: 9.0,
+            minimum_font_size: 20.0,
             auto_fit: true,
             alignment: TextAlign::Center,
             writing_mode: WritingMode::Horizontal,

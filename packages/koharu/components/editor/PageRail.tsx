@@ -164,6 +164,29 @@ export function PageRail() {
     }
   }
 
+  useEffect(() => {
+    const navigate = (event: KeyboardEvent) => {
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
+      const target = event.target
+      if (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement ||
+        (target instanceof HTMLElement && target.isContentEditable)
+      ) return
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
+      const currentIndex = pages.findIndex((page) => page.id === active)
+      if (currentIndex < 0) return
+      const nextIndex = currentIndex + (event.key === 'ArrowRight' ? 1 : -1)
+      if (!pages[nextIndex]) return
+      event.preventDefault()
+      select(nextIndex, false, false)
+    }
+
+    window.addEventListener('keydown', navigate)
+    return () => window.removeEventListener('keydown', navigate)
+  }, [active, pages, selected])
+
   const prefetchOnIntent = (page: string) => {
     const project = queryClient.getQueryData<ProjectInfo | null>(projectKey)
     if (!project || project.active_page === page) return
