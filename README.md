@@ -1,10 +1,10 @@
 <h1 align="center">Koharu</h1>
 
 <p align="center">ML-powered manga translator, written in <b>Rust</b>.
-This fork contain small changes such as
--Preserve the canvas zoom level when switching pages.
--Navigate between pages with the left and right arrow keys.
--Make the minimum automatic text size configurable and set the default to 20.
+>This fork contain small changes such as
+>-Preserve the canvas zoom level when switching pages.
+>-Navigate between pages with the left and right arrow keys.
+>-Make the minimum automatic text size configurable and set the default to 20.
 </p>
 
 <p align="center">
