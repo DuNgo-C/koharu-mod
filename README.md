@@ -1,6 +1,11 @@
 <h1 align="center">Koharu</h1>
 
-<p align="center">ML-powered manga translator, written in <b>Rust</b>.</p>
+<p align="center">ML-powered manga translator, written in <b>Rust</b>.
+This fork contain small changes such as
+-Preserve the canvas zoom level when switching pages.
+-Navigate between pages with the left and right arrow keys.
+-Make the minimum automatic text size configurable and set the default to 20.
+</p>
 
 <p align="center">
 <a href="https://github.com/koharu-rs/koharu/releases/latest" target="_blank"><img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/koharu-rs/koharu/total?style=for-the-badge&link=https%3A%2F%2Fgithub.com%2Fkoharu-rs%2Fkoharu%2Freleases%2Flatest"></a>
